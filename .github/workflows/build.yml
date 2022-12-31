@@ -1,0 +1,60 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  release:
+    types: [ created ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        buildpreset: 
+        - Release
+
+    steps:
+    - name: Get latest CMake and ninja
+      uses: lukka/get-cmake@latest
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Setup VS environment
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
+
+
+    - name: Generate SDK projects
+      working-directory: External/ZHMModSDK
+      run: |
+        cmake --preset x64-${{ matrix.buildpreset }} .
+
+    - name: Build SDK
+      working-directory: External/ZHMModSDK
+      run: |
+        cmake --build _build/x64-${{ matrix.buildpreset }} install
+
+
+    - name: Generate Mod projects
+      run: |
+        cmake --preset x64-${{ matrix.buildpreset }} .
+
+    - name: Build Mod
+      run: |
+        cmake --build _build/x64-${{ matrix.buildpreset }}
+
+    - name: Archive Mod dll
+      uses: actions/upload-artifact@v2
+      with:
+        name: ImmersiveAssassination.dll
+        path: _build/x64-${{ matrix.buildpreset }}/ImmersiveAssassination.dll

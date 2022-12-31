@@ -39,6 +39,7 @@
           "strategy": "external"
         },
         "cacheVariables": {
+          "PRESET_NAME": "${presetName}",
           "CMAKE_INSTALL_PREFIX": "${sourceDir}/_install/${presetName}",
           "CMAKE_TOOLCHAIN_FILE": {
             "value": "${sourceDir}/External/vcpkg/scripts/buildsystems/vcpkg.cmake",

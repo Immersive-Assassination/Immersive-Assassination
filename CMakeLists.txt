@@ -25,7 +25,7 @@ target_link_libraries(buttplug-cpp PRIVATE
 	websocketpp::websocketpp
 )
 
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH} ${CMAKE_CURRENT_LIST_DIR}/External/ZHMModSDK/_install/x64-Release-Mingw")
+set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH} ${CMAKE_CURRENT_LIST_DIR}/External/ZHMModSDK/_install/${PRESET_NAME}")
 find_package(ZHMModSDK REQUIRED)
 
 add_library(ImmersiveAssassination SHARED

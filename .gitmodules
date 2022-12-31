@@ -1,0 +1,9 @@
+[submodule "External/vcpkg"]
+	path = External/vcpkg
+	url = https://github.com/Microsoft/vcpkg.git
+[submodule "External/buttplug-cpp"]
+	path = External/buttplug-cpp
+	url = https://github.com/Immersive-Assassination/buttplug-cpp
+[submodule "External/ZHMModSDK"]
+	path = External/ZHMModSDK
+	url = https://github.com/olebeck/ZHMModSDK

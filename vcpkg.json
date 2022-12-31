@@ -1,0 +1,10 @@
+{
+    "name": "plug-and-eliminate",
+    "dependencies": [
+      "websocketpp",
+      "nlohmann-json",
+      "asio",
+      "imgui",
+      "directxmath"
+    ]
+  }

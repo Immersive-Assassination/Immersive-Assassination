@@ -35,8 +35,9 @@ jobs:
         arch: x64
 
     - name: get ZHMModSDK commit hash
+      working-directory: External/ZHMModSDK
       run: |
-        echo "ZHMModSDK_COMMIT=$(git submodule status External/ZHMModSDK)" >> $GITHUB_OUTPUT
+        echo "ZHMModSDK_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
     - name: Cache SDK
       id: cache-sdk

@@ -36,15 +36,16 @@ jobs:
 
     - name: get ZHMModSDK commit hash
       working-directory: External/ZHMModSDK
+      id: ZHMModSDK_ver
       run: |
-        echo "ZHMModSDK_COMMIT=$(git rev-parse HEAD)" >> $env:GITHUB_OUTPUT
+        echo "COMMIT=$(git rev-parse HEAD)" >> $env:GITHUB_OUTPUT
 
     - name: Cache SDK
       id: cache-sdk
       uses: actions/cache@v3
       with:
         path: External/ZHMModSDK
-        key: ZHMModSDK_${{ env.ZHMModSDK_COMMIT }}
+        key: ZHMModSDK_${{ steps.ZHMModSDK_ver.outputs.COMMIT }}
 
     - name: Generate SDK projects
       if: steps.cache-sdk.outputs.cache-hit != 'true'

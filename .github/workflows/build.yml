@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - test-actions
   release:
     types: [ created ]
   pull_request:

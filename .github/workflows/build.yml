@@ -43,7 +43,7 @@ jobs:
     - name: Build SDK
       working-directory: External/ZHMModSDK
       run: |
-        cmake --build _build/x64-${{ matrix.buildpreset }} install
+        cmake --build _build/x64-${{ matrix.buildpreset }} --target install
 
 
     - name: Generate Mod projects

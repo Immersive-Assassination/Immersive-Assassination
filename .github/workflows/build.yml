@@ -34,13 +34,24 @@ jobs:
       with:
         arch: x64
 
+    - run: |
+        echo "ZHMModSDK_COMMIT=$(git submodule status External/ZHMModSDK)" >> $GITHUB_OUTPUT
+
+    - name: Cache SDK
+      id: cache-sdk
+      uses: actions/cache@v3
+      with:
+        path: External/ZHMModSDK
+        key: ZHMModSDK_${{ env.ZHMModSDK_COMMIT }}
 
     - name: Generate SDK projects
+      if: steps.cache-sdk.outputs.cache-hit != 'true'
       working-directory: External/ZHMModSDK
       run: |
         cmake --preset x64-${{ matrix.buildpreset }} .
 
     - name: Build SDK
+      if: steps.cache-sdk.outputs.cache-hit != 'true'
       working-directory: External/ZHMModSDK
       run: |
         cmake --build _build/x64-${{ matrix.buildpreset }} --target install

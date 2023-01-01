@@ -5,9 +5,9 @@
 #include <unordered_map>
 #include <future>
 
-#include <IPluginInterface.h>
+#include <ZHMModSDK/IPluginInterface.h>
 
-#include "Buttplug/Client.hpp"
+#include <Buttplug/Client.hpp>
 
 
 class ImmersiveAssassination : public IPluginInterface

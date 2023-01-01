@@ -1,15 +1,15 @@
 #include "ImmersiveAssassination.h"
 
-#include "Hooks.h"
-#include "Logging.h"
-#include "Functions.h"
+#include <ZHMModSDK/Hooks.h>
+#include <ZHMModSDK/Logging.h>
+#include <ZHMModSDK/Functions.h>
 
 #include <Glacier/ZScene.h>
 #include <Glacier/ZAIGameState.h>
 #include <Glacier/SOnlineEvent.h>
 
 #include <nlohmann/json.hpp>
-#include <misc/cpp/imgui_stdlib.h>
+#include <imgui_stdlib.h>
 
 void ImmersiveAssassination::RatingEvent::DrawSetting()
 {
